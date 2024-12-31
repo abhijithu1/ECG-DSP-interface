@@ -1,4 +1,16 @@
 // Existing pin definitions remain unchanged
+int clockPin = 9; // Define the pin for clock output
+int delayTime = 10; // Delay time in milliseconds for 100 Hz frequency
+
+// Define individual input pins
+int inputPin1 = 2;
+int inputPin2 = 3;
+int inputPin3 = 4;
+int inputPin4 = 5;
+int inputPin5 = 6;
+int inputPin6 = 7;
+int inputPin7 = 8;
+int inputPin8 = 10;
 
 void setup() {
   pinMode(clockPin, OUTPUT); 
@@ -38,7 +50,7 @@ void loop() {
   float voltage = ((decimalValue / 256.0) * 5);
 
   // Print timestamp + voltage
-  Serial.print(millis());
-  Serial.print(","); 
+  // Serial.print(millis());
+  // Serial.print(","); 
   Serial.println(voltage, 3); 
 }

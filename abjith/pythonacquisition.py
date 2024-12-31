@@ -1,7 +1,6 @@
 import serial
 import time
-#make sure to install pyserial
-# pip install pyserial matplotlib
+
 # Serial port and file setup
 PORT = 'COM3'  # Replace with your Arduino serial port (e.g., '/dev/ttyUSB0' on Linux/Mac)
 BAUD_RATE = 9600
@@ -10,21 +9,28 @@ FILE_NAME = 'voltage_data.csv'
 # Open serial connection
 ser = serial.Serial(PORT, BAUD_RATE, timeout=1)
 time.sleep(2)  # Allow Arduino to reset
+elapsed = 30
 
 # Open file to save data
 with open(FILE_NAME, 'w') as file:
     file.write('Timestamp,Voltage\n')  # Write header
     
     try:
-        print("Recording data... Press Ctrl+C to stop.")
+        print(f"Recording data... Automatically stops after {elapsed} seconds.")
+        start_time = time.time()  # Initialize start time
         while True:
+            elapsed_time = time.time() - start_time  # Calculate elapsed time
+            if elapsed_time > elapsed:  # Stop after 10 seconds
+                print("10 seconds elapsed. Stopping recording.")
+                break
+
             line = ser.readline().decode('utf-8').strip()
             if line:
                 if ',' in line:  # Data with Arduino timestamp
-                    file.write(line + '\n')
+                    voltage = line.split(',')[-1]  # Extract voltage value
+                    file.write(f"{elapsed_time:.2f},{voltage}\n")
                 else:  # If no timestamp from Arduino, add Python timestamp
-                    timestamp = time.time()
-                    file.write(f"{timestamp},{line}\n")
+                    file.write(f"{elapsed_time:.2f},{line}\n")
                     
     except KeyboardInterrupt:
         print("Data recording stopped by user.")
