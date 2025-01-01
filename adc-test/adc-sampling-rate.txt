@@ -1,0 +1,4 @@
+100hz - clockpin = 5ms
+50hz - clockpin = 10ms
+
+1÷(2×100×(1÷1000)) = 5
