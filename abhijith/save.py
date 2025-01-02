@@ -4,7 +4,7 @@ import time
 # Serial port and file setup
 PORT = 'COM3'  # Replace with your Arduino serial port (e.g., '/dev/ttyUSB0' on Linux/Mac)
 BAUD_RATE = 9600
-FILE_NAME = 'voltage_data.csv'
+FILE_NAME = 'ecg.csv'
 
 # Open serial connection
 ser = serial.Serial(PORT, BAUD_RATE, timeout=1)
