@@ -9,7 +9,7 @@ FILE_NAME = 'ecg.csv'
 # Open serial connection
 ser = serial.Serial(PORT, BAUD_RATE, timeout=1)
 time.sleep(2)  # Allow Arduino to reset
-elapsed = 10
+elapsed = 5
 
 # Open file to save data
 with open(FILE_NAME, 'w') as file:
