@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Load data from CSV
-data = pd.read_csv('abi10.csv')
+data = pd.read_csv('ecg.csv')
 
 # Convert timestamp to float (if it's Unix-based)
 data['Timestamp'] = pd.to_numeric(data['Timestamp'], errors='coerce')
