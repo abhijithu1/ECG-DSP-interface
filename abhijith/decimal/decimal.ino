@@ -47,7 +47,7 @@ void loop() {
     decimalValue = (decimalValue << 1) | (binaryData[i] - '0');
   }
 
-  float voltage = ((decimalValue / 256.0) * 5);
+  float voltage = ((decimalValue / 256.0) * 3);
 
   // Print timestamp + voltage
   // Serial.print(millis());
