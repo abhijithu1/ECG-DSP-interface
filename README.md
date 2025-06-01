@@ -1,2 +1,2 @@
-# ECG-DSP-interface
+# ECG-DSP-Interface
 ### BERL TKMCE
